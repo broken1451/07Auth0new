@@ -1,0 +1,26 @@
+<div class="container text-center mt-5" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+@if(authService.user$ | async){
+    <h1 *ngIf="!loading">Perfil de usuario</h1>
+    <hr *ngIf="!loading">
+    <div *ngIf="!loading">
+        <div class="d-flex" *ngIf="authService.user$ | async as user; ">
+            <div class="card" style="width: 18rem;">
+                <img [src]="user.picture" class="card-img-top" [alt]="user.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.name}}</h5>
+                    <p class="card-text">{{user.email}}</p>
+                </div>
+            </div>
+            <div class="ml-5">
+                <pre class="ml-5">
+                    <code>{{ user | json }}</code>
+                </pre>
+            </div>
+        </div>
+    </div>
+}
