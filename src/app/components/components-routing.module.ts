@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../services/guards/auth.guard';
+import { authGuard } from '../services/guards/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'protejida', loadChildren: () => import('./protejida/protejida.module').then(m => m.ProtejidaModule),
-    canActivate: [AuthGuard]
+    canActivate: [authGuard]
   },
 
 ];
